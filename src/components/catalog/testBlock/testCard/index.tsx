@@ -61,10 +61,10 @@ export function TestCard({
 
       {/* Кнопка "Пройти тест" */}
       <div className=" w-full flex items-center justify-between ">
-        <div className="flex items-center gap-2  bg-white px-4  rounded-lg">
-          <Link href="#" className="text-black text-sm px-6 py-[10px]">Пройти тест</Link>
+        <Link href="#" className="flex items-center gap-2  bg-white px-4  rounded-lg">
+          <div  className="text-black text-sm px-6 py-[10px]">Пройти тест</div>
           <Image src="/catalog/arrow.svg" alt="иконка" width={12} height={12} />
-        </div>
+        </Link>
           <DynamicSVG score= {score}/>
         
       </div>

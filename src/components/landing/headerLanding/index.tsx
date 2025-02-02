@@ -1,6 +1,5 @@
 import Image from "next/image"
-import { ButtonLogin } from "../buttonLogin"
-import { ButtonSignup } from "../buttonSignup"
+import { EntryButtons } from "../entryButtons"
 
 export function HeaderLanding(){
 
@@ -10,15 +9,14 @@ export function HeaderLanding(){
 
             <div className="flex flex-row gap-[25px]">
                 
-                <button className="text-white">Услуги</button>
+                <button className="text-white font-sans leading-6">Услуги</button>
 
-                <button className="text-white">Категории</button>
+                <button className="text-white font-sans leading-6">Категории</button>
 
             </div>
 
             <div className="flex flex-row gap-[20px]">
-                <ButtonSignup/>
-                <ButtonLogin/>
+                <EntryButtons/>
             </div>
         </header>
     )

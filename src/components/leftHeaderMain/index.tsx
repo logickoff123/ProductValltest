@@ -1,3 +1,4 @@
+'use client'
 import Image from "next/image"
 import Link from "next/link"
 export function LeftHeader() {
@@ -5,7 +6,7 @@ export function LeftHeader() {
     const iconStyle = "w-[48px] h-[48px] flex items-center justify-center"
     return (
         // ИСПРАВИТЬ Padding
-        <div className="h-full min-h-max flex flex-col items-center justify-between gap-[50px] bg-secondaryBackground max-w-min p-[26px]">
+        <div className="h-full min-h-max flex flex-col items-center justify-between gap-[50px] bg-secondaryBackground max-w-min ">
 
             <Image src='leftHeader/LogoIcon.svg' alt="Valltest" width={40} height={45} />
 
@@ -16,6 +17,7 @@ export function LeftHeader() {
             </Link>
 
             <div className="flex flex-col gap-5">
+
                 {/* Домой /catalog  */}
                 <Link href='/catalog' className={iconStyle}>
                     <Image src='leftHeader/homeIcon.svg' alt="Главная" width={20} height={21} />

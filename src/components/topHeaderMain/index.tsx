@@ -1,3 +1,5 @@
+'use client'
+
 import Image from "next/image"
 
 
@@ -6,7 +8,7 @@ export function TopHeader() {
 
 
     return (
-        <header className="flex items-center justify-between">
+        <header className="flex items-center justify-between h-[61px] ">
 
             <div className="font-roboto text-[32px]  text-white">Главная</div>
 

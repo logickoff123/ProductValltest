@@ -1,3 +1,5 @@
+'use client'
+
 import Link from "next/link";
 import Image from "next/image";
 import { DynamicSVG } from "../testScore";
@@ -16,8 +18,8 @@ export function TestCard({
   imgPath?: string;
   totalQuestions?: number;
   totalComplited?: number;
-  lvl?: "Легкий"|"Средний"|"Тяжелый";
-  score?:number|string 
+  lvl?: "Легкий" | "Средний" | "Тяжелый";
+  score?: number | string
 }) {
 
   // функция вызова блока информации
@@ -54,19 +56,19 @@ export function TestCard({
 
       {/* Основная информация */}
       <div className=" w-full flex  items-center justify-between text-testInfoText ">
-          <InfoBlock message="Пройдено:" iconPath="/catalog/iconComp.svg" iconSize={14} info={totalComplited} />
-          <InfoBlock message="Вопросы:" iconPath="/catalog/iconQuestion.svg" iconSize={14} info={totalQuestions} />
-          <InfoBlock message="" iconPath="/catalog/iconLvl.svg" iconSize={20} info={lvl} />
+        <InfoBlock message="Пройдено:" iconPath="/catalog/iconComp.svg" iconSize={14} info={totalComplited} />
+        <InfoBlock message="Вопросы:" iconPath="/catalog/iconQuestion.svg" iconSize={14} info={totalQuestions} />
+        <InfoBlock message="" iconPath="/catalog/iconLvl.svg" iconSize={20} info={lvl} />
       </div>
 
       {/* Кнопка "Пройти тест" */}
       <div className=" w-full flex items-center justify-between ">
         <Link href="#" className="flex items-center gap-2  bg-white px-4  rounded-lg">
-          <div  className="text-black text-sm px-6 py-[10px]">Пройти тест</div>
+          <div className="text-black text-sm px-6 py-[10px]">Пройти тест</div>
           <Image src="/catalog/arrow.svg" alt="иконка" width={12} height={12} />
         </Link>
-          <DynamicSVG score= {score}/>
-        
+        <DynamicSVG score={score} />
+
       </div>
     </div>
   );

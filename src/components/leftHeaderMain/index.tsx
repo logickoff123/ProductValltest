@@ -6,7 +6,7 @@ export function LeftHeader() {
     const iconStyle = "w-[48px] h-[48px] flex items-center justify-center"
     return (
         // ИСПРАВИТЬ Padding
-        <div className="h-full min-h-max flex flex-col items-center justify-between gap-[50px] bg-secondaryBackground max-w-min ">
+        <div className="h-full min-h-max flex flex-col items-center gap-[50px] bg-secondaryBackground max-w-min ">
 
             <Image src='leftHeader/LogoIcon.svg' alt="Valltest" width={40} height={45} />
 
@@ -23,7 +23,7 @@ export function LeftHeader() {
                     <Image src='leftHeader/homeIcon.svg' alt="Главная" width={20} height={21} />
                 </Link>
 
-                {/* Мастерская ИСПРАВИТ НАЗВАНие */}
+                {/* Мастерская ИСПРАВИТЬ НАЗВАНие */}
                 <Link href='/workshop' className={iconStyle}>
                     <Image src='leftHeader/WorkShopIcon.svg' alt="Мастерская" width={24} height={24} />
                 </Link>

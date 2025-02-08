@@ -62,8 +62,8 @@ export function TestCard({
       </div>
 
       {/* Кнопка "Пройти тест" */}
-      <div className=" w-full flex items-center justify-between ">
-        <Link href="#" className="flex items-center gap-2  bg-white px-4  rounded-lg">
+      <div className=" w-full flex items-center justify-between" >
+        <Link href="#" className="flex items-center gap-2  bg-white px-4  rounded-lg transition duration-300 hover:scale-105 hover:bg-[#C1EF00]">
           <div className="text-black text-sm px-6 py-[10px]">Пройти тест</div>
           <Image src="/catalog/arrow.svg" alt="иконка" width={12} height={12} />
         </Link>

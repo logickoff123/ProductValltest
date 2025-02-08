@@ -1,5 +1,5 @@
 'use client'
-
+// ПОДКЛЮЧИТЬСЯ К БД 
 import Image from "next/image"
 
 export default function SearchBar() {

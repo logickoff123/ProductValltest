@@ -2,7 +2,10 @@
 import Image from "next/image"
 import Link from "next/link"
 
+
+
 import { IconList } from "./iconList"
+import { CreateTestButton } from "../workShop/createTestButton"
 
 export function LeftHeader() {
 
@@ -16,9 +19,7 @@ export function LeftHeader() {
 
             {/* Создать тест  */}
 
-            <Link href='/create_test'>
-                <Image src='/leftHeader/CreateNewTestIcon.svg' alt="Главная" width={48} height={48} />
-            </Link>
+            <CreateTestButton />
 
             <div className="flex flex-col gap-5">
                 <IconList />

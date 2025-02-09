@@ -17,7 +17,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
                 </header>
 
                 {/* Основной контент */}
-                <main className=" px-10 flex-1  bg-mainBackground min-w-0 mt-[121px]">
+                <main className=" px-10 flex-1 bg-mainBackground min-w-0 mt-[121px]">
                     {children}
                 </main>
             </div>

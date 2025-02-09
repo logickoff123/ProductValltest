@@ -1,7 +1,11 @@
-export default function Create() {
-    return (
-      <div>
-      </div>
-    );
-  }
-  
+import MainContainer from '@/containers/create_test/maincontainer';
+
+const Page = () => {
+  return (
+    <div>
+      <MainContainer />
+    </div>
+  );
+};
+
+export default Page;

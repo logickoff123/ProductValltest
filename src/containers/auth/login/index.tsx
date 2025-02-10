@@ -52,7 +52,7 @@ export const LoginContainer: React.FC = () => {
             <AuthButtons />
           </div>
           <div className="mt-auto mb-1">
-            <UniversalButton text="Войти" href="/auth/catalog" />
+            <UniversalButton text="Войти" href="/catalog" />
           </div>
         </form>
       </div>

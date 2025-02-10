@@ -1,6 +1,5 @@
 'use client'
 import Image from "next/image"
-import Link from "next/link"
 
 
 
@@ -9,7 +8,7 @@ import { CreateTestButton } from "../workShop/createTestButton"
 
 export function LeftHeader() {
 
-    const iconStyle = "w-[48px] h-[48px] flex items-center justify-center"
+    //const iconStyle = "w-[48px] h-[48px] flex items-center justify-center"
 
     return (
 

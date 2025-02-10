@@ -3,7 +3,7 @@
 
 
 export function WorkShopCategory() {
-    const activeButton = [true, false, false, false]
+    //const activeButton = [true, false, false, false]
 
     // const [activeIndex, setActiveIndex] = useState(0)
 

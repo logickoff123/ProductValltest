@@ -1,4 +1,5 @@
 {
+  "eslint": "./node_modules/.bin/eslint --quiet --fix --ext .vue ./resources/js/*/*",
   "name": "product-front",
   "version": "0.1.0",
   "private": true,

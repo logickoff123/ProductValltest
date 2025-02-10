@@ -1,6 +1,7 @@
 'use client'
 
 import Image from "next/image"
+import Link from "next/link";
 import { usePathname } from 'next/navigation'
 
 
@@ -30,7 +31,9 @@ export function TopHeader() {
                 </div>
 
                 <Image src="/topHeader/notificationIcon.svg" width={24} height={24} alt="Уведомления" />
-                <Image src='/topHeader/avatar.svg' width={41} height={41} alt='Аватар' />
+                <Link href='/profile'>
+                    <Image src='/topHeader/avatar.svg' width={41} height={41} alt='Аватар' />
+                </Link>
 
             </div>
 

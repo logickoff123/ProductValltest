@@ -22,7 +22,7 @@ export const useAuth = () => {
         const data = await response.json();
         console.log('Успешная аутентификация:', data);
 
-        router.push('/auth/catalog');
+        router.push('/catalog'); // было /auth/catalog - исправил 
       } else {
         console.error('Ошибка аутентификации:', response.statusText);
         alert('Неверный логин или пароль');

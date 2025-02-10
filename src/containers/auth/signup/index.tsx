@@ -39,15 +39,15 @@ export const SignupContainer: React.FC = () => {
               />
             </div>
           </div>
-            <div className="mt-6">
-              <Image src="/auth/line.png" alt="Line" width={464} height={2} className="w-full h-auto"
-              />
-            </div>
+          <div className="mt-6">
+            <Image src="/auth/line.png" alt="Line" width={464} height={2} className="w-full h-auto"
+            />
+          </div>
           <div className="mt-6">
             <AuthButtons />
           </div>
           <div className="mt-auto mb-1">
-            <UniversalButton text="Зарегистрироваться" href="/auth/catalog" />
+            <UniversalButton text="Зарегистрироваться" href="/catalog" />
           </div>
         </form>
       </div>

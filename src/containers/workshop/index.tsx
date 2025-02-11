@@ -15,6 +15,8 @@ export default function WorkShopContainer() {
             </div>
 
             <WorkShopCategory />
+            {/* тут будет блок филтров */}
+            {/* от него будет меняться отображение карточек */}
 
         </div>
     )

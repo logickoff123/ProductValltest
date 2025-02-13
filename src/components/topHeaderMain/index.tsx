@@ -13,7 +13,8 @@ export function TopHeader() {
     enum PathsEnum {
         '/catalog' = 'Главная',
         '/catalog/workshop' = 'Мастерская',
-        '/catalog/settings' = 'Настройки'
+        '/catalog/settings' = 'Настройки',
+        '/catalog/create_test_ai' = 'Создание теста ИИ'
     }
 
     const pageName = PathsEnum[thisPath as keyof typeof PathsEnum] || 'Неизвестная страница';

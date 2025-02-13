@@ -5,8 +5,6 @@ export default function Home() {
   return (
     <div>
         <LandingPage/>
-        {/* <Login/> */}
-
     </div>
   );
 }

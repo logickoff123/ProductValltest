@@ -3,17 +3,13 @@ import Image from "next/image";
 import { useWorkshop, FilterState } from "@/context/workshop";
 
 export const FilterPopUp = ({ filterName, nameArray, onSelect, showIt }: { filterName: string, nameArray: string[], onSelect: (value: string) => void, showIt: boolean }) => {
-
-
     return (
-
-        <div className={`max-h-[325px] overflow-y-scroll transition-transform duration-300 ease-in-out  ${showIt ? "opacity-100 scale-100 translate-y-0" : "opacity-50 scale-0 -translate-y-1/2 -translate-x-1/4 pointer-events-none"} absolute left-0 top-full mt-2 border-[#C1EF00] border-2 flex flex-col items rounded-xl w-[200%] bg-mainBackground shadow-black shadow-lg`}>
+        <div className={`max-h-[325px] overflow-y-scroll transition-transform duration-300 ease-in-out  ${showIt ? " z-50 opacity-100 scale-100 translate-y-0" : "opacity-50 scale-0 -translate-y-1/2 -translate-x-1/4 pointer-events-none"} absolute left-0 top-full mt-2 border-[#C1EF00] border-2 flex flex-col items rounded-xl w-[200%] bg-mainBackground shadow-black shadow-lg`}>
             {nameArray.map((obj, i) => (
                 <button
                     onClick={() => onSelect(obj)}
                     className={`text-base text-white py-7 pl-6 pr-16 flex items-center justify-start  shadow-sm shadow-black rounded-xl transtion duration-300 hover:bg-[#C1EF00] hover:text-mainBackground`}
-                    key={i}
-                >
+                    key={i}>
                     {obj}
                 </button>))}
         </div>

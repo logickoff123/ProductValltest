@@ -2,7 +2,8 @@ import { WorkShopCategory } from "@/components/workShop/categoryButtons"
 import { CreateTestButton } from "@/components/workShop/createTestButton"
 import { SearchBarWorkShop } from "@/components/workShop/searchBar"
 import { FilterBar } from "@/components/workShop/filterBar"
-
+import { TestCard } from "@/components/catalog/testBlock/testCard"
+import { WideTestCard } from "@/components/workShop/wideTestCard"
 
 
 
@@ -22,6 +23,11 @@ export default function WorkShopContainer() {
             {/* тут будет блок филтров */}
             {/* от него будет меняться отображение карточек */}
             <FilterBar />
+
+            <div className="flex flex-col items-center mt-6">
+                <WideTestCard imgPath="/workshop/img.png" />
+            </div>
+
 
         </div>
     )

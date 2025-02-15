@@ -9,7 +9,7 @@ export function WideTestCard({ name = 'Python для самых маленьки
     totalComplited = 151,
     lvl = "Средний",
     score = 4.9,
-    tags = ['Созданно ИИ', 'Математика'] }: TestCardInterface) {
+    tags = ['ИИ', 'Математика'] }: TestCardInterface) {
 
 
     return (
@@ -27,7 +27,13 @@ export function WideTestCard({ name = 'Python для самых маленьки
                 <div className=" text-xl w-full  text-white text-left">{name}</div>
                 <div className="max-w-[350px] gap-4 h-full flex flex-col justify-center ">
                     <MainCardInfo totalQuestions={totalQuestions} totalComplited={totalComplited} lvl={lvl} />
-                    <TestTag tag="Пизда" />
+                    <div className="flex w-full items-center gap-2">
+                        {tags.map((value, index) => {
+                            return (
+                                <TestTag key={index} tag={value} />
+                            )
+                        })}
+                    </div>
                 </div>
                 {/* Кнопка "Пройти тест" */}
                 <TakeTestButton score={score} />

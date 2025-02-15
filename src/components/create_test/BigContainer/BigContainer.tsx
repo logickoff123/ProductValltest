@@ -14,13 +14,13 @@ const Container = () => {
       </div>
       <div className="flex flex-col space-y-4">
         <LinkBox
-          icon="/create_test/tool-02.png"
+          icon="create_test/Icon.svg"
           text="Создание теста самостоятельно"
           link="/text-a"
           description="Создавайте тесты самостоятельно с детальной проработкой каждого вопроса, чтобы максимально точно соответствовать вашим требованиям и целям обучения"
         />
         <LinkBox
-          icon="/create_test/code-01.png"
+          icon="create_test/code-01.svg"
           text="Создание текста ИИ"
           link="/text-ai"
           description="Используйте возможности искусственного интеллекта для мгновенного создания тестов, экономя свое время и усилия"

@@ -3,9 +3,15 @@
 @tailwind components;
 @tailwind utilities;
 
-
-
-
-
+/* Для Chrome, Safari, Opera */
+.scrollbar-hidden::-webkit-scrollbar {
+    display: none;
+  }
+  
+  /* Для IE, Edge и Firefox */
+  .scrollbar-hidden {
+    -ms-overflow-style: none; /* IE и Edge */
+    scrollbar-width: none; /* Firefox */
+  }
 
 body {}

@@ -45,7 +45,7 @@ export const FilterButton = ({
                     setFilterWithOpenKey(isPopUpOpen ? null : filterKey);
                 }
             }}
-                className={` transition duration-300 ease-in-out text-base text-white flex justify-between items-center gap-2 border-[#C1EF00] border-2 rounded-xl px-6 py-[15px] ${isFilterActive ? 'bg-[#C1EF00] text-mainBackground' : ''} `}>
+                className={` transition duration-300 ease-in-out text-base flex justify-between items-center gap-2 border-[#C1EF00] border-2 rounded-xl px-6 py-[15px] ${isFilterActive ? 'bg-[#C1EF00] text-black' : 'text-white '} `}>
                 {name}
                 <div className="w-6 h-6 flex items-center justify-center">
                     {isFilterActive ?

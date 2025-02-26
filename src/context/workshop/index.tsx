@@ -1,9 +1,17 @@
 'use client'
-import { createContext, useContext, useState } from "react";
+import { createContext, useContext, useState, ReactNode } from "react";
 
-const WorkshopContext = createContext<any>(null);
+// Определяем интерфейс для значений контекста
+interface WorkshopContextType {
+    activeIndex: number;
+    setActiveIndex: (index: number) => void;
+    categories: string[];
+}
 
-export function WorkshopProvider({ children }: { children: React.ReactNode }) {
+// Создаем контекст с начальным значением null
+const WorkshopContext = createContext<WorkshopContextType | null>(null);
+
+export function WorkshopProvider({ children }: { children: ReactNode }) {
     const [activeIndex, setActiveIndex] = useState(0);
     const categories = ["Все тесты", "Опубликованные", "Черновики", "Избранное"];
 
@@ -14,7 +22,6 @@ export function WorkshopProvider({ children }: { children: React.ReactNode }) {
     );
 }
 
-
 export function useWorkshop() {
     const context = useContext(WorkshopContext);
     if (!context) {
@@ -22,3 +29,4 @@ export function useWorkshop() {
     }
     return context;
 }
+

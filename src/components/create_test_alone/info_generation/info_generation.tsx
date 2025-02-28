@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import Dropdown from '@/components/create_test_alone/dropdown/dropdown'; // Импортируем компонент выпадающего списка
 
+
 const GeneralInfo: React.FC = () => {
   const [subject, setSubject] = useState<string>('');
   const [level, setLevel] = useState<string>('');

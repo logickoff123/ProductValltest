@@ -13,8 +13,10 @@ const GeneralInfoSection: React.FC = () => {
 };
 
 const GeneralInfoContainer: React.FC = () => {
+
+  
   const handleCreateTest = () => {
-    alert('Тест создан!'); 
+
   };
 
   return (

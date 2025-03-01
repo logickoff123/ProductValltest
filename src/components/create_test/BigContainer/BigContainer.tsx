@@ -16,13 +16,13 @@ const Container = () => {
         <LinkBox
           icon="/create_test/tool-02.svg"
           text="Создание теста самостоятельно"
-          link="/text-a"
+          link="/create_test_alone/"
           description="Создавайте тесты самостоятельно с детальной проработкой каждого вопроса, чтобы максимально точно соответствовать вашим требованиям и целям обучения"
         />
         <LinkBox
           icon="/create_test/code-01.svg"
           text="Создание текста ИИ"
-          link="/text-ai"
+          link="catalog/create_test_ai/"
           description="Используйте возможности искусственного интеллекта для мгновенного создания тестов, экономя свое время и усилия"
         />
       </div>

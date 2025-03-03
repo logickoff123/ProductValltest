@@ -1,7 +1,8 @@
-import { Exercise } from "@/types/PreviewTestAI"
+'use client'
 import { TaskBlock } from "./answerBlock";
+import { Problem } from "@/types/Test/test";
 
-interface ExerciseUI extends Exercise {
+interface ExerciseUI extends Problem {
     index: number;
 }
 
@@ -18,7 +19,7 @@ export function ExercisePreview({ question, answers, index }: ExerciseUI) {
 
             {answers.map((answer, answerIndex) => {
                 return (
-                    <TaskBlock answer={answer} key={answerIndex} colour={colours[answerIndex]} />
+                    <TaskBlock answer={answer.value} key={answerIndex} colour={colours[answerIndex]} />
                 )
             })}
         </div>

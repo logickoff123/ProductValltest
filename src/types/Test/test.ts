@@ -22,12 +22,12 @@ export type TestAI = {
 
 }
 
-type Problem = {
+export type Problem = {
     question: string;
     answers: Answer[];
 };
 
-type Answer = {
+export type Answer = {
     value: string | number;
     is_correct: boolean;
 };

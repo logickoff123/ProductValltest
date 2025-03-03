@@ -24,9 +24,9 @@ const Container = () => {
           description="Используйте возможности искусственного интеллекта для мгновенного создания тестов, экономя свое время и усилия"
         />
         <LinkBox
-          icon="/create_test/question.svg" 
+          icon="/create_test/question.svg"
           text="Генерация вопросов по тексту"
-          link="/example_method/"
+          link="/text_to_generate/"
           description="Загрузите текст, и искусственный интеллект автоматически сформирует вопросы на его основе — быстро и без лишних действий"
         />
       </div>

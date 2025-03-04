@@ -3,12 +3,23 @@ import { ExercisePreview } from "@/components/preview_ai_test/exercise";
 import { useTestSession } from "@/store/TestSession/useTestSession";
 import { Problem } from "@/types/Test/test";
 import { useRouter } from 'next/navigation';
+import { useEffect } from "react";
+
 
 export function PreviewAIContainer() {
     const { push } = useRouter();
-    const areAllAnswersSelected = useTestSession((state) => state.areAllAnswersSelected);
 
+
+    const areAllAnswersSelected = useTestSession((state) => state.areAllAnswersSelected());
+
+    //использовать позже, когда бует страничка с результатами 
     const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
+
+
+
+    // ПРИМЕР, РЕАЛЬНЫЕ ДАННЫЕ ПОЛУЧАЮ ЧЕРЕЗ ЗАПРОС
+    const setProblems = useTestSession((state) => state.setProblems)
+    const problemsData = useTestSession((state) => state.problems)
 
     // удалить ТЕСТОВАЯ DATA
     const problems: Problem[] = [
@@ -24,10 +35,10 @@ export function PreviewAIContainer() {
         {
             question: "What is 2 + 2?",
             answers: [
-                { value: 3, is_correct: false },
-                { value: 4, is_correct: true },
-                { value: 5, is_correct: false },
-                { value: 6, is_correct: false }
+                { value: "3", is_correct: false },
+                { value: "4", is_correct: true },
+                { value: "5", is_correct: false },
+                { value: "6", is_correct: false }
             ]
         },
         {
@@ -59,21 +70,36 @@ export function PreviewAIContainer() {
         }
     ];
 
+    useEffect(() => {
+        setProblems(problems)
+    }, []);
+
+
+
     return (
         <div className="flex flex-col justify-between items-center gap-6">
-            {problems.map((problem, index) => (
+            {/* генерирую задания */}
+            {problemsData.map((problem, index) => (
                 <ExercisePreview
                     key={index}
                     question={problem.question}
                     answers={problem.answers}
-                    index={index}
+                    exerciseIndex={index}
                 />
             ))}
 
+            {/* уведомление */}
+            {!areAllAnswersSelected &&
+                <div className="w-full py-8 flex justify-center text-center items-center rounded-xl text-red-500 border-2 bg-mainBackground border-red-500">
+                    Выберите ответы для всех заданий!
+                </div>
+            }
+            {/* кнопка проверки */}
             <button
-                onClick={() => push(`${currentPath}/result`)}
-                disabled={!areAllAnswersSelected()}
-                className="w-full text-2xl border-[6px]   text-white rounded-xl py-16 flex justify-center text-center items-center bg-mainBackground disabled:bg-gray-500"
+                onClick={() => console.log(useTestSession.getState().checkResults())}
+                disabled={!areAllAnswersSelected}
+                className="w-full text-2xl border-[3px]  border-[#C1EF00] text-[#C1EF00] rounded-xl py-16 flex justify-center text-center items-center bg-mainBackground disabled:bg-secondaryBackground
+                transition duration-200 ease-in-out hover:bg-[#C1EF00] hover:text-white"
             >
                 Проверить
             </button>

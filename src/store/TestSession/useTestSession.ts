@@ -30,9 +30,10 @@ export const useTestSession = create<TestSession>((set, get) => ({
 
         //проваливаюсь внутрь одной проблемы
         // и с помощью сравнения нахожу правильные ответы
-        const result = problems.filter((problem, index) => {
+        const result = problems.filter((problem, index) =>
             problem.answers.some((ans) => ans.is_correct && ans.value === selectedAnswers[index])
-        }).length
+        ).length;
+
 
         return result
     },

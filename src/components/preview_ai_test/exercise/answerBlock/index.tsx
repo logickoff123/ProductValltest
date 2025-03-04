@@ -1,23 +1,38 @@
-export function TaskBlock({ answer, colour, isQuestion = false }: { answer: string | number, colour: string, isQuestion?: boolean }) {
-    const colourMap: { [key: string]: string } = {
-        lime: "bg-teal-500",
-        indigo: "bg-indigo-500",
-        sky: "bg-sky-600",
-        orange: "bg-orange-500",
-        mainBackground: 'bg-mainBackground'
-    };
+import { useTestSession } from "@/store/TestSession/useTestSession";
+
+
+
+
+// Карта цветов вынесена за компонент
+const colourMap: { [key: string]: string } = {
+    lime: "bg-teal-500",
+    indigo: "bg-indigo-500",
+    sky: "bg-sky-600",
+    orange: "bg-orange-500",
+    mainBackground: "bg-mainBackground"
+};
+
+export function TaskBlock({ answer, colour, exerciseIndex }: { answer: string; colour: string, exerciseIndex: number }) {
+
+    const selectedAnswer = useTestSession((state) => state.selectedAnswers[exerciseIndex]);
+    const setAnswers = useTestSession((state) => state.setAnswers);
+
+
+    const onSubmit = () => setAnswers(exerciseIndex, answer);
+
 
     return (
-        <div
-            className={`w-full ${colourMap[colour]} ${isQuestion ? "border-2 border-gray-500 text-3xl relative" : "text-2xl"} text-white rounded-xl py-16 flex justify-center text-center items-center`}>
+        <button
+
+            onClick={onSubmit}
+            className={`w-full ${colourMap[colour]} text-2xl text-white 
+            rounded-xl py-16 border-[3px]  flex justify-center 
+            text-center items-center transition duration-200 ease-in-out hover:border-[3px] hover:border-[#C1EF00]
+            ${selectedAnswer === answer ? 'border-[#C1EF00]' : 'border-mainBackground'}
+            `}
+        >
             {answer}
-            {isQuestion ? (
-                <div className="absolute left-2 bottom-2 bg-black text-white text-sm px-2 py-1 rounded-lg">
-                    Вопрос
-                </div>
-            ) : null}
-
-
-        </div>
+        </button>
     );
 }
+

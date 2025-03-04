@@ -28,7 +28,7 @@ export type Problem = {
 };
 
 export type Answer = {
-    value: string | number;
+    value: string;
     is_correct: boolean;
 };
 
@@ -46,18 +46,18 @@ const jsonFILE: Test = {
         {
             "question": "Чему равен корень из 25?",
             "answers": [
-                { "value": 3, "is_correct": false },
-                { "value": 5, "is_correct": true },
-                { "value": 7, "is_correct": false },
-                { "value": 25, "is_correct": false }
+                { "value": "3", "is_correct": false },
+                { "value": "5", "is_correct": true },
+                { "value": "7", "is_correct": false },
+                { "value": "25", "is_correct": false }
             ]
         },
         {
             "question": "Решите уравнение: 2x + 3 = 9",
             "answers": [
-                { "value": 1, "is_correct": false },
-                { "value": 3, "is_correct": true },
-                { "value": 5, "is_correct": false }
+                { "value": "1", "is_correct": false },
+                { "value": "3", "is_correct": true },
+                { "value": "5", "is_correct": false }
             ]
         }
     ],

@@ -9,13 +9,7 @@ import { useEffect } from "react";
 export function PreviewAIContainer() {
     const { push } = useRouter();
 
-
     const areAllAnswersSelected = useTestSession((state) => state.areAllAnswersSelected());
-
-    //использовать позже, когда бует страничка с результатами 
-    const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
-
-
 
     // ПРИМЕР, РЕАЛЬНЫЕ ДАННЫЕ ПОЛУЧАЮ ЧЕРЕЗ ЗАПРОС
     const setProblems = useTestSession((state) => state.setProblems)
@@ -74,6 +68,12 @@ export function PreviewAIContainer() {
         setProblems(problems)
     }, []);
 
+    const handleCheckResults = () => {
+        useTestSession.getState().checkResults();
+        const currentPath = typeof window !== "undefined" ? window.location.pathname : "/";
+        push(`${currentPath}/result`);
+    };
+
 
 
     return (
@@ -96,7 +96,7 @@ export function PreviewAIContainer() {
             }
             {/* кнопка проверки */}
             <button
-                onClick={() => console.log(useTestSession.getState().checkResults())}
+                onClick={handleCheckResults}
                 disabled={!areAllAnswersSelected}
                 className="w-full text-2xl border-[3px]  border-[#C1EF00] text-[#C1EF00] rounded-xl py-16 flex justify-center text-center items-center bg-mainBackground disabled:bg-secondaryBackground
                 transition duration-200 ease-in-out hover:bg-[#C1EF00] hover:text-white"

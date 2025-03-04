@@ -7,8 +7,8 @@ interface TestSession {
     selectedAnswers: { [key: number]: string } // key -> это индекс задния, у нас будет много заданий и к ним будет относится ответ 
     setProblems: (problems: Problem[]) => void
     setAnswers: (questionIndex: number, answer: string) => void
-    // resetAllInfo: () => void
-    checkResults: () => number;
+    resetAllInfo: () => void
+    checkResults: () => { result: number, total: number };
     areAllAnswersSelected: () => boolean
 }
 
@@ -34,13 +34,20 @@ export const useTestSession = create<TestSession>((set, get) => ({
             problem.answers.some((ans) => ans.is_correct && ans.value === selectedAnswers[index])
         ).length;
 
+        //всего вопросов
+        const total = problems.length
 
-        return result
+
+        return { result: result, total: total }
     },
     // проверить, что на все задания есть ответ, чтобы логика не сломалась
     areAllAnswersSelected: () => {
         const { problems, selectedAnswers } = get()
         return problems.length === Object.keys(selectedAnswers).length
-    }
+    },
+    resetAllInfo: () => set((state) => ({
+        problems: [],
+        selectedAnswers: {},
+    }))
 
 }))

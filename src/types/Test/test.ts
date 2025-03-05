@@ -12,12 +12,14 @@ export type Test = {
 
 // !!!ВАЖНО!!! 
 // тайп именно ДЛЯ СОЗДАНИЯ ТЕСТА AI 
+// TODO выяснять нужно ли добавить обработаку количества вопросов 
 export type TestAI = {
     name: string;
     subject: string;
     difficulty: 'Легкий' | 'Средний' | 'Сложный';
     topic: string;
-    description: string;
+    totalQuestions: number;
+    // description: string;
     tags: 'ИИ';
 
 }

@@ -12,13 +12,14 @@ interface CreateTestAI {
 }
 
 // TODO колво заданий
-const useTestCreateAI = create<CreateTestAI>((set, get) => ({
+export const useTestCreateAI = create<CreateTestAI>((set, get) => ({
     creationInfoAI: {
         name: "",
         subject: "",
         difficulty: "Легкий",
         topic: '',
-        description: '',
+        totalQuestions: 0,
+        // description: '',
         tags: 'ИИ'
 
     },
@@ -33,7 +34,8 @@ const useTestCreateAI = create<CreateTestAI>((set, get) => ({
             subject: "",
             difficulty: "Легкий",
             topic: '',
-            description: '',
+            totalQuestions: 0,
+            // description: '',
             tags: 'ИИ'
         }
     }),
@@ -43,7 +45,10 @@ const useTestCreateAI = create<CreateTestAI>((set, get) => ({
         const { creationInfoAI: creationInfoAI } = get();
         if (!creationInfoAI.name.trim()) return false;
         if (!creationInfoAI.subject.trim()) return false;
-        if (!creationInfoAI.description.trim()) return false;
+        if (!creationInfoAI.topic.trim()) return false;
+        if (creationInfoAI.totalQuestions === 0) return false;
+
+        // if (!creationInfoAI.description.trim()) return false;
 
         return true;
     },

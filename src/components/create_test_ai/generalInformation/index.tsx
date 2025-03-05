@@ -63,9 +63,10 @@ export function GeneralInformation(){
                 <Dropdown id="dropdown3" label="Тема" placeholder="Выберите тему теста" options={topics} selected={topic} onChange={setTopic} />
             </div>
 
-            <div className="mt-[15px]">
-                <TextPrompt label="Описание" placeholder="Дайте описание для детальной проработки теста ИИ" isDescription={true} value={description} onChange={(e) => setDescription(e.target.value)} /> {/* Подключаем textarea */}
-            </div>
+            {/* <div className="mt-[15px]">
+                <TextPrompt label="Описание" placeholder="Дайте описание для детальной проработки теста ИИ" isDescription={true} value={description} onChange={(e) => setDescription(e.target.value)} />
+            </div> */}
+            
         </div>
         
     )

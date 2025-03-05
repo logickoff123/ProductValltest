@@ -65,7 +65,7 @@ export function TestSettings(){
                 </div>
             </div>
             <div>
-                <Link href="" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] px-[12px] w-fit h-[42px] justify-center items-center">
+                <Link href="/catalog/preview/ai_test/1" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] px-[12px] w-fit h-[42px] justify-center items-center">
                     Перейти к тесту
                 </Link>
             </div>

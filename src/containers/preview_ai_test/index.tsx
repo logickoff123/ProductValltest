@@ -13,9 +13,14 @@ export function PreviewAIContainer() {
 
     // ПРИМЕР, РЕАЛЬНЫЕ ДАННЫЕ ПОЛУЧАЮ ЧЕРЕЗ ЗАПРОС
     const setProblems = useTestSession((state) => state.setProblems)
+    const setTestName = useTestSession((state) => state.setTestName)
+
     const problemsData = useTestSession((state) => state.problems)
+    const testName = useTestSession((state) => state.testName)
 
     // удалить ТЕСТОВАЯ DATA
+
+    const randomName = 'Python - начало'
     const problems: Problem[] = [
         {
             question: "What is the capital of France?",
@@ -63,9 +68,12 @@ export function PreviewAIContainer() {
             ]
         }
     ];
+    //
 
     useEffect(() => {
         setProblems(problems)
+        setTestName(randomName)
+
     }, []);
 
     const handleCheckResults = () => {
@@ -78,6 +86,10 @@ export function PreviewAIContainer() {
 
     return (
         <div className="flex flex-col justify-between items-center gap-6">
+            {/* название теста */}
+            <div className=" flex justify-center  bg-secondaryBackground text-white w-full py-16 rounded-xl font-bold text-4xl">
+                {testName}
+            </div>
             {/* генерирую задания */}
             {problemsData.map((problem, index) => (
                 <ExercisePreview

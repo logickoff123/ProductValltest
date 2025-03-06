@@ -1,25 +1,88 @@
 "use client";
 
 import React, { useEffect, useState } from "react";
-import Link from "next/link";
 import Dropdown from "../dropdown";
 import TextPrompt from "../textPrompt"; // Импортируем компонент textarea
-import { DropdownProvider } from "../dropdown/dropdownContext";
 import { useTestCreateAI } from "@/store/create_test/CreateTestAI";
-
+import { useRouter } from 'next/navigation';
+import { useMutation } from "@tanstack/react-query";
+import axios from "axios";
+import { TestAI } from "@/types/Test/test";
+import { useQuery } from "@tanstack/react-query";
+import { useTestSession } from "@/store/TestSession/useTestSession";
 
 
 
 export function TestSettings() {
 
+    const { push } = useRouter()
+
+    const creationInfoAI = useTestCreateAI((state) => state.creationInfoAI)
     const testName = useTestCreateAI((state) => state.creationInfoAI.name)
     const totalQuestions = useTestCreateAI((state) => state.creationInfoAI.totalQuestions)
     const setInfo = useTestCreateAI((state) => state.setInfo)
+    const isTestOptionsValid = useTestCreateAI((state) => state.isTestOptionsValid)
 
     useEffect(() => {
         setInfo({ name: testName, totalQuestions })
+        isTestOptionsValid()
+
     }, [setInfo, testName, totalQuestions])
 
+    const [isClick, setIsClick] = useState() // нажали кнопку -> данные ушли на сервер 
+
+
+
+    const [testId, setTestId] = useState("")
+
+    // отправляю данные для нейронки
+    const postTest = async (newTest: Partial<TestAI>) => {
+        const response = await axios.post('/api/creationTestAI', newTest);
+        return response.data; // ожидаю, что сервер вернёт { testId: "123" }
+    };
+
+    // получаю тест
+    const getTest = async (testId: string) => {
+        const response = await axios.get(`/api/getTest/${testId}`);
+        return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
+    };
+
+    // отправляю данные для нейронки
+    const { mutate, isPending } = useMutation({
+        mutationFn: postTest,
+        onSuccess: (data) => {
+            setTestId(data.testId);
+        },
+    });
+
+    // получаю тест
+    const { data } = useQuery({
+        queryKey: ['getTest', testId], // заменить на testID
+        queryFn: () => getTest(testId),
+        enabled: !!testId,
+
+    })
+
+    // передаю данные в хранилище сессии, чтобы на след страинцы отображался тест 
+    const setProblems = useTestSession((state) => state.setProblems)
+    const setTestName = useTestSession((state) => state.setTestName)
+
+    const handleSubmit = async () => {
+        setIsClick(true)
+        mutate(creationInfoAI)
+
+    }
+
+    // если все отправилось, ТО МЫ ОТПРАВЛЯЕМ ЮЗЕРА НА СТРАНИЦУ С ТЕСТОМ// возможны ошибки 
+    useEffect(() => {
+        if (data?.test) {
+            setProblems(data.test.problems);
+            setTestName(data.test.name);
+            push(`/catalog/preview/ai_test/${testId}`);
+        }
+    }, [data, testId, push]);
+
+    // UI ONLY not FUNC
     const [time, setTime] = useState("");
     const [numberOfPoints, setNumberOfPoints] = useState("");
     const [status, setStatus] = useState("");
@@ -55,9 +118,21 @@ export function TestSettings() {
                 </div>
             </div>
             <div>
-                <Link href="/catalog/preview/ai_test/1" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] px-[12px] w-fit h-[42px] justify-center items-center">
+                <button
+                    disabled={!isTestOptionsValid() || isClick}
+                    onClick={handleSubmit}
+                    className={`flex px-[12px] w-fit h-[42px] justify-center items-center rounded-[12px] ${isTestOptionsValid() && !isClick ? "bg-[rgba(193,239,0,1)] text-black" : "bg-gray-500 text-gray-300 cursor-not-allowed"
+                        }`}>
                     Перейти к тесту
-                </Link>
+
+                </button>
+
+                {/* ИДЕТ ЗАПРОС НА СЕРВЕР, мы ждем, поменять на isClick */}
+                {isPending &&
+                    <div className=" mt-10 text-center text-white rounded-xl bg-secondaryBackground px-2 py-4 w-1/5">
+                        Текст генерируется, ожидайте
+                    </div>
+                }
             </div>
         </div>
 

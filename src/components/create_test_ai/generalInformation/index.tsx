@@ -18,11 +18,13 @@ export function GeneralInformation() {
     const topic = useTestCreateAI((state) => state.creationInfoAI.topic);
     const setInfo = useTestCreateAI((state) => state.setInfo);
     const creationInfoAI = useTestCreateAI((state) => state.creationInfoAI);
+    const isTestOptionsValid = useTestCreateAI((state) => state.isTestOptionsValid)
+
 
 
     useEffect(() => {
         setInfo({ subject, difficulty, topic });
-    }, [subject, difficulty, topic, setInfo]);
+    }, [subject, difficulty, topic, setInfo, isTestOptionsValid]);
 
     // const [description, setDescription] = useState(""); // Храним описание
 
@@ -37,7 +39,7 @@ export function GeneralInformation() {
         <div className="bg-secondaryBackground rounded-[24px] px-[24px] pt-[24px] pb-[24px] mb-[24px]">
             <div className="flex justify-between">
                 <h1 className="text-white font-['Arial'] font-bold text-[32px] leading-[36.8px]">Общая информация</h1>
-                <Link onClick={() => console.log(creationInfoAI)} href="" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] w-[104px] h-[42px] justify-center items-center">
+                <Link onClick={() => console.log({ creationInfoAI: creationInfoAI, isTestOptionsValid: isTestOptionsValid() })} href="" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] w-[104px] h-[42px] justify-center items-center">
                     Сохранить
                 </Link>
             </div>

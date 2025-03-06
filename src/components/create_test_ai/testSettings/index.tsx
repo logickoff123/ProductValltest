@@ -29,7 +29,7 @@ export function TestSettings() {
 
     }, [setInfo, testName, totalQuestions])
 
-    const [isClick, setIsClick] = useState() // нажали кнопку -> данные ушли на сервер 
+    const [isClick, setIsClick] = useState<boolean>(false) // нажали кнопку -> данные ушли на сервер 
 
 
 

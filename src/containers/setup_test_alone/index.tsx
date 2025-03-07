@@ -38,7 +38,7 @@ export const CreateTestContainer: React.FC = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
-      const response = await axios.post("/api/CreateTestAlone", creationInfo);
+      const response = await axios.post("http://localhost:8000/create_test_manually", creationInfo);
       return response.data; // ожидаю, что сервер вернет объект с id
 
       // // ✅ Эмулируем серверный ответ с задержкой 1 сек
@@ -49,10 +49,10 @@ export const CreateTestContainer: React.FC = () => {
       // });
     },
     onSuccess: (data) => {
-      if (data.id) {
+      if (data.test_id) {
         setProblems(tasks);
         setTestName(testName);
-        router.push(`/catalog/preview/ai_test/${data.id}`);
+        router.push(`/catalog/preview/ai_test/${data.test_id}`);
       }
     },
     onError: (error) => {

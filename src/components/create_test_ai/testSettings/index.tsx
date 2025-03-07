@@ -37,13 +37,13 @@ export function TestSettings() {
 
     // отправляю данные для нейронки
     const postTest = async (newTest: Partial<TestAI>) => {
-        const response = await axios.post('/api/creationTestAI', newTest);
+        const response = await axios.post('http://localhost:8000/generate_question', newTest);
         return response.data; // ожидаю, что сервер вернёт { testId: "123" }
     };
 
     // получаю тест
     const getTest = async (testId: string) => {
-        const response = await axios.get(`/api/getTest/${testId}`);
+        const response = await axios.get(`http://localhost:8000/get_test/`); // ${testId}
         return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
     };
 
@@ -57,7 +57,7 @@ export function TestSettings() {
 
     // получаю тест
     const { data } = useQuery({
-        queryKey: ['getTest', testId], // заменить на testID
+        queryKey: ['getTest'], // заменить на testID
         queryFn: () => getTest(testId),
         enabled: !!testId,
 
@@ -78,7 +78,7 @@ export function TestSettings() {
         if (data?.test) {
             setProblems(data.test.problems);
             setTestName(data.test.name);
-            push(`/catalog/preview/ai_test/${testId}`);
+            push(`/catalog/preview/ai_test/1`);// поменять на ${testId}
         }
     }, [data, testId, push]);
 

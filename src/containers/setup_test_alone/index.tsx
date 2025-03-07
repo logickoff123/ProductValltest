@@ -29,24 +29,24 @@ export const CreateTestContainer: React.FC = () => {
   const testName = useTestCreateAlone((state) => state.creationInfo.name)
   const setInfo = useTestCreateAlone((state) => state.setInfo)
   const isTestProblemsValid = useTestCreateAlone((state) => state.isTestProblemsValid())
-
+  const creationInfo = useTestCreateAlone((state) => state.creationInfo)
   // передача данных в TestSession 
   const setProblems = useTestSession((state) => state.setProblems)
   const setTestName = useTestSession((state) => state.setTestName)
 
   // запрос на сервер расккомментить и вставить внутрь mutateFn
-  // const response = await axios.post("/api/CreateTestAlone", creationInfo);
-  // return response.data; // ожидаю, что сервер вернет объект с id
+
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
-      // return axios.post("/api/CreateTestAlone", creationInfo); // <-- ❌ Отключаем реальный запрос
+      const response = await axios.post("/api/CreateTestAlone", creationInfo);
+      return response.data; // ожидаю, что сервер вернет объект с id
 
-      // ✅ Эмулируем серверный ответ с задержкой 1 сек
-      return new Promise((resolve) => {
-        setTimeout(() => {
-          resolve({ id: "test123" }); // Принудительно задаем ID теста
-        }, 1000);
-      });
+      // // ✅ Эмулируем серверный ответ с задержкой 1 сек
+      // return new Promise((resolve) => {
+      //   setTimeout(() => {
+      //     resolve({ id: "test123" }); // Принудительно задаем ID теста
+      //   }, 1000);
+      // });
     },
     onSuccess: (data) => {
       if (data.id) {

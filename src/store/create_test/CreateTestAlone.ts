@@ -10,7 +10,7 @@ interface CreateTestAlone {
     setInfo: (newInfo: Partial<Test>) => void;
     resetAllInfo: () => void;
     isTestOptionsValid: () => boolean;
-    isTestProblemsValid: () => void;
+    isTestProblemsValid: () => boolean;
 }
 
 export const useTestCreateAlone = create<CreateTestAlone>((set, get) => ({
@@ -55,9 +55,19 @@ export const useTestCreateAlone = create<CreateTestAlone>((set, get) => ({
     isTestProblemsValid: () => {
         const { creationInfo } = get();
 
+        if (creationInfo.problems.length === 0) return false
+
         // прохожусь по каждой проблеме
-        creationInfo.problems.every((problem) => {
+        return creationInfo.problems.every((problem) => {
+
+
+
             if (!problem.question.trim()) return false
+
+            if (!Array.isArray(problem.answers) || problem.answers.length === 0) return false; // проверяем, что массив ответов не пустой
+
+            const hasEmptyAnswer = problem.answers.some((answer) => !answer.value.trim()); // проверка на пустые строки в ответах
+            if (hasEmptyAnswer) return false;
 
             //проверяю, что внутри каждой задачи есть как минимум один правильный ответ 
             // и как минимум два варианта ответ

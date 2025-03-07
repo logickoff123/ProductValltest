@@ -6,9 +6,9 @@ import { useState } from 'react';
 interface TaskFormProps {
   taskNumber: number;
   question: string;
-  answers: { text: string; isCorrect: boolean }[];
+  answers: { value: string; is_correct: boolean }[];
   onQuestionChange: (question: string) => void;
-  onAnswersChange: (answers: { text: string; isCorrect: boolean }[]) => void;
+  onAnswersChange: (answers: { value: string; is_correct: boolean }[]) => void;
   onRemove: (taskNumber: number) => void;
 }
 
@@ -24,31 +24,31 @@ export const TaskForm: React.FC<TaskFormProps> = ({
     onRemove(taskNumber);
   };
 
-{/* Удаление ответа */}
+  {/* Удаление ответа */ }
   const handleRemoveAnswer = (index: number) => {
     const newAnswers = answers.filter((_, i) => i !== index);
     onAnswersChange(newAnswers);
   };
 
-{/* Добавление нового ответа */}
+  {/* Добавление нового ответа */ }
   const handleAddAnswer = () => {
-    onAnswersChange([...answers, { text: '', isCorrect: false }]);
+    onAnswersChange([...answers, { value: '', is_correct: false }]);
   };
 
-{/* Изменение текста ответа */}
+  {/* Изменение текста ответа */ }
   const handleAnswerChange = (index: number, value: string) => {
     const newAnswers = [...answers];
-    newAnswers[index].text = value;
+    newAnswers[index].value = value;
     onAnswersChange(newAnswers);
   };
-{/* Выбор правильного ответа */}
+  {/* Выбор правильного ответа */ }
   const handleToggleCorrect = (index: number) => {
     const newAnswers = [...answers];
-    newAnswers[index].isCorrect = !newAnswers[index].isCorrect;
+    newAnswers[index].is_correct = !newAnswers[index].is_correct;
     onAnswersChange(newAnswers);
   };
 
-{/* Автоматическое изменение высоты textarea */}
+  {/* Автоматическое изменение высоты textarea */ }
   const handleQuestionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onQuestionChange(e.target.value);
     e.target.style.height = 'auto';
@@ -69,10 +69,10 @@ export const TaskForm: React.FC<TaskFormProps> = ({
         <AnswerInput
           key={index}
           index={index}
-          value={answer.text}
+          value={answer.value}
           onChange={handleAnswerChange}
           onToggleCorrect={handleToggleCorrect}
-          isCorrect={answer.isCorrect}
+          isCorrect={answer.is_correct}
           onRemove={handleRemoveAnswer}
         />
       ))}

@@ -18,63 +18,63 @@ export function PreviewAIContainer() {
     const problemsData = useTestSession((state) => state.problems)
     const testName = useTestSession((state) => state.testName)
 
-    // удалить ТЕСТОВАЯ DATA
+    // // удалить ТЕСТОВАЯ DATA
 
-    const randomName = 'Python - начало'
-    const problems: Problem[] = [
-        {
-            question: "What is the capital of France?",
-            answers: [
-                { value: "Berlin", is_correct: false },
-                { value: "Madrid", is_correct: false },
-                { value: "Paris", is_correct: true },
-                { value: "Rome", is_correct: false }
-            ]
-        },
-        {
-            question: "What is 2 + 2?",
-            answers: [
-                { value: "3", is_correct: false },
-                { value: "4", is_correct: true },
-                { value: "5", is_correct: false },
-                { value: "6", is_correct: false }
-            ]
-        },
-        {
-            question: "Which planet is known as the Red Planet?",
-            answers: [
-                { value: "Earth", is_correct: false },
-                { value: "Mars", is_correct: true },
-                { value: "Jupiter", is_correct: false },
-                { value: "Saturn", is_correct: false }
-            ]
-        },
-        {
-            question: "What is the largest ocean on Earth?",
-            answers: [
-                { value: "Atlantic Ocean", is_correct: false },
-                { value: "Indian Ocean", is_correct: false },
-                { value: "Arctic Ocean", is_correct: false },
-                { value: "Pacific Ocean", is_correct: true }
-            ]
-        },
-        {
-            question: "Who wrote 'Romeo and Juliet'?",
-            answers: [
-                { value: "Charles Dickens", is_correct: false },
-                { value: "Mark Twain", is_correct: false },
-                { value: "William Shakespeare", is_correct: true },
-                { value: "Jane Austen", is_correct: false }
-            ]
-        }
-    ];
-    //
+    // const randomName = 'Python - начало'
+    // const problems: Problem[] = [
+    //     {
+    //         question: "What is the capital of France?",
+    //         answers: [
+    //             { value: "Berlin", is_correct: false },
+    //             { value: "Madrid", is_correct: false },
+    //             { value: "Paris", is_correct: true },
+    //             { value: "Rome", is_correct: false }
+    //         ]
+    //     },
+    //     {
+    //         question: "What is 2 + 2?",
+    //         answers: [
+    //             { value: "3", is_correct: false },
+    //             { value: "4", is_correct: true },
+    //             { value: "5", is_correct: false },
+    //             { value: "6", is_correct: false }
+    //         ]
+    //     },
+    //     {
+    //         question: "Which planet is known as the Red Planet?",
+    //         answers: [
+    //             { value: "Earth", is_correct: false },
+    //             { value: "Mars", is_correct: true },
+    //             { value: "Jupiter", is_correct: false },
+    //             { value: "Saturn", is_correct: false }
+    //         ]
+    //     },
+    //     {
+    //         question: "What is the largest ocean on Earth?",
+    //         answers: [
+    //             { value: "Atlantic Ocean", is_correct: false },
+    //             { value: "Indian Ocean", is_correct: false },
+    //             { value: "Arctic Ocean", is_correct: false },
+    //             { value: "Pacific Ocean", is_correct: true }
+    //         ]
+    //     },
+    //     {
+    //         question: "Who wrote 'Romeo and Juliet'?",
+    //         answers: [
+    //             { value: "Charles Dickens", is_correct: false },
+    //             { value: "Mark Twain", is_correct: false },
+    //             { value: "William Shakespeare", is_correct: true },
+    //             { value: "Jane Austen", is_correct: false }
+    //         ]
+    //     }
+    // ];
+    // //
 
-    useEffect(() => {
-        setProblems(problems)
-        setTestName(randomName)
+    // useEffect(() => {
+    //     setProblems(problems)
+    //     setTestName(randomName)
 
-    }, []);
+    // }, []);
 
     const handleCheckResults = () => {
         useTestSession.getState().checkResults();

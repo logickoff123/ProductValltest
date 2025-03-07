@@ -4,11 +4,8 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "@/components/create_test_ai/dropdown";
 import TextPrompt from "@/components/create_test_ai/textPrompt";
 import { useRouter } from 'next/navigation';
-// import { useMutation } from "@tanstack/react-query";
-// import axios from "axios";
 import { Test } from "@/types/Test/test";
-// import { useQuery } from "@tanstack/react-query";
-import { useTestSession } from "@/store/TestSession/useTestSession";
+
 import { useTestCreateAlone } from "@/store/create_test/CreateTestAlone";
 
 
@@ -28,57 +25,8 @@ export function TestSettingsAlone() {
 
     }, [setInfo, testName])
 
-    // const [isClick, setIsClick] = useState<boolean>(false) // нажали кнопку -> данные ушли на сервер 
 
     const [testId, setTestId] = useState("")
-
-    // ТУТ БЫЛИ ЗАПРОСЫ НА СЕРВ
-    // // отправляю данные для нейронки
-    // const postTest = async (newTest: Partial<Test>) => {
-    //     const response = await axios.post('/api/creationTestAI', newTest);
-    //     return response.data; // ожидаю, что сервер вернёт { testId: "123" }
-    // };
-
-    // // получаю тест
-    // const getTest = async (testId: string) => {
-    //     const response = await axios.get(`/api/getTest/${testId}`);
-    //     return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
-    // };
-
-    // // отправляю данные для нейронки
-    // const { mutate, isPending } = useMutation({
-    //     mutationFn: postTest,
-    //     onSuccess: (data) => {
-    //         setTestId(data.testId);
-    //     },
-    // });
-
-    // // получаю тест
-    // const { data } = useQuery({
-    //     queryKey: ['getTest', testId], // заменить на testID
-    //     queryFn: () => getTest(testId),
-    //     enabled: !!testId,
-
-    // })
-
-    // передаю данные в хранилище сессии, чтобы на след страинцы отображался тест 
-    // const setProblems = useTestSession((state) => state.setProblems)
-    const setTestName = useTestSession((state) => state.setTestName)
-
-    // const handleSubmit = async () => {
-    //     setIsClick(true)
-    //     // mutate(creationInfo)
-
-    //     // }
-
-    // // если все отправилось, ТО МЫ ОТПРАВЛЯЕМ ЮЗЕРА НА СТРАНИЦУ С ТЕСТОМ// возможны ошибки 
-    // useEffect(() => {
-    //     if (data?.test) {
-    //         setProblems(data.test.problems);
-    //         setTestName(data.test.name);
-    //         push(`/catalog/preview/ai_test/${testId}`);
-    //     }
-    // }, [data, testId, push]);
 
     // UI ONLY not FUNC
     const [time, setTime] = useState("");

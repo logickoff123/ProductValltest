@@ -1,9 +1,9 @@
 'use client';
 
-export const TestName: React.FC = () => {
+export const TestName = ({ name }: { name: string }) => {
   return (
     <div className="bg-[#141415] p-6 rounded-[24px] shadow-md mb-6">
-      <h1 className="text-3xl text-white font-bold mb-6">Название теста</h1>
+      <h1 className="text-3xl text-white font-bold mb-6">{name}</h1>
       <div className="flex gap-4">
 
         <button type="button" className="bg-[#1C1C1D] text-white text-lg px-4 py-3 rounded-[12px] hover:bg-[rgba(193,239,0,1)] hover:text-black transition duration-200 flex items-center justify-center group hover:scale-105 transform">

@@ -37,7 +37,7 @@ export function TestSettings() {
 
     // отправляю данные для нейронки
     const postTest = async (newTest: Partial<TestAI>) => {
-        const response = await axios.post('http://localhost:8000/generate_question', newTest);
+        const response = await axios.post('http://localhost:8000/api/generate_question', newTest);
         return response.data; // ожидаю, что сервер вернёт { testId: "123" }
     };
 

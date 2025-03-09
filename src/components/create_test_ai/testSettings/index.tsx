@@ -42,13 +42,13 @@ export function TestSettings() {
     };
 
     // получаю тест
-    const getTest = async (testId: string) => {
-        const response = await axios.get(`http://localhost:8000/get_test/`); // ${testId}
-        return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
-    };
+    //const getTest = async (testId: string) => {
+        //const response = await axios.get(`http://localhost:8000/get_test/${testId}`); // ${testId}
+        //return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
+    //};
 
     // отправляю данные для нейронки
-    const { mutate, isPending } = useMutation({
+    const { mutate, isPending,isSuccess } = useMutation({
         mutationFn: postTest,
         onSuccess: (data) => {
             setTestId(data.testId);
@@ -56,12 +56,12 @@ export function TestSettings() {
     });
 
     // получаю тест
-    const { data } = useQuery({
-        queryKey: ['getTest'], // заменить на testID
-        queryFn: () => getTest(testId),
-        enabled: !!testId,
-
-    })
+//    const { data } = useQuery({
+//        queryKey: ['getTest',testId], // заменить на testID
+//        queryFn: () => getTest(testId),
+//        enabled: !!testId,
+//
+//    })
 
     // передаю данные в хранилище сессии, чтобы на след страинцы отображался тест 
     const setProblems = useTestSession((state) => state.setProblems)
@@ -74,13 +74,13 @@ export function TestSettings() {
     }
 
     // если все отправилось, ТО МЫ ОТПРАВЛЯЕМ ЮЗЕРА НА СТРАНИЦУ С ТЕСТОМ// возможны ошибки 
-    useEffect(() => {
-        if (data?.test) {
-            setProblems(data.test.problems);
-            setTestName(data.test.name);
-            push(`/catalog/preview/ai_test/1`);// поменять на ${testId}
+   useEffect(() => {if (isSuccess) {
+       push(`/catalog/preview/ai_test/${testId}`);// поменять на ${testId}
+//        if (data?.test) {
+//  //           setProblems(data.test.problems);
+//  //           setTestName(data.test.name);
         }
-    }, [data, testId, push]);
+   }, [/* data,  */testId, push]);
 
     // UI ONLY not FUNC
     const [time, setTime] = useState("");

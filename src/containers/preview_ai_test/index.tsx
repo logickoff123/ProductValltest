@@ -4,9 +4,12 @@ import { useTestSession } from "@/store/TestSession/useTestSession";
 import { Problem } from "@/types/Test/test";
 import { useRouter } from 'next/navigation';
 import { useEffect } from "react";
+import axios from "axios";
+import { TestAI } from "@/types/Test/test";
+import { useQuery } from "@tanstack/react-query";
 
 
-export function PreviewAIContainer() {
+export function PreviewAIContainer({id:testId}:{id: number}) {
     const { push } = useRouter();
 
     const areAllAnswersSelected = useTestSession((state) => state.areAllAnswersSelected());
@@ -82,7 +85,27 @@ export function PreviewAIContainer() {
         push(`${currentPath}/result`);
     };
 
+    // получаю тест
+    const getTest = async (testId: number) => {
+        const response = await axios.get(`http://localhost:8000/get_test/${testId}`); // ${testId}
+        return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
+    };
 
+    const { data, isSuccess} = useQuery({
+        queryKey: ['getTest',testId], // заменить на testID
+        queryFn: () => getTest(testId),
+        //enabled: !!testId,
+
+    })
+console.log(data)
+        // если все отправилось, ТО МЫ ОТПРАВЛЯЕМ ЮЗЕРА НА СТРАНИЦУ С ТЕСТОМ// возможны ошибки 
+        useEffect(() => {
+            if (isSuccess) {
+                setProblems(data.problems);
+                setTestName(data.name);
+                //push(`/catalog/preview/ai_test/${testId}`);// поменять на ${testId}
+            }
+        }, [data, testId, push,isSuccess]);
 
     return (
         <div className="flex flex-col justify-between items-center gap-6">

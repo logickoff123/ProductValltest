@@ -2,7 +2,7 @@
 import { TaskBlock } from "./answerBlock";
 import { Problem } from "@/types/Test/test";
 import { QuestionBlock } from "./questionBlock";
-
+import 'katex/dist/katex.min.css';
 
 interface ExerciseUI extends Problem {
     exerciseIndex: number;

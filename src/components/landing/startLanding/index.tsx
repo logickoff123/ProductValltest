@@ -3,7 +3,7 @@ import { ButtonStart } from "../buttonStart"
 export function StartLanding() {
 
     return (
-        <div className="flex h-screen justify-center w-1/2 flex-col ">
+        <div className="flex h-screen justify-center w-1/2 flex-col pl-[120px] ">
             <div className="font-sans text-7xl font-bold leading-[82px]">
 
                 <span className="block text-white">

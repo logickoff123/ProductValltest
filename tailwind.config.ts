@@ -19,9 +19,12 @@ export default {
         testInfoText: '#718096'
       },
       fontFamily: {
+        inter: ["Inter", "sans-serif"],
+        'space-grotesk': ['Space Grotesk', 'sans-serif'],
         roboto: ["Roboto", "sans-serif"]
       },
     },
   },
   plugins: [],
 } satisfies Config;
+  

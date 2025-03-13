@@ -1,7 +1,6 @@
 'use client';
 
 import { AnswerInput } from '@/components/setup_test_alone/exercise/AnswerInput';
-import { useState } from 'react';
 
 interface TaskFormProps {
   taskNumber: number;
@@ -20,7 +19,7 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   onAnswersChange,
   onRemove,
 }) => {
-  const handleRemove = (event: React.MouseEvent<HTMLButtonElement>) => {
+  const handleRemove = (/* event: React.MouseEvent<HTMLButtonElement> */) => {
     onRemove(taskNumber);
   };
 

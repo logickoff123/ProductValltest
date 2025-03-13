@@ -1,11 +1,9 @@
 'use client'
 import { ExercisePreview } from "@/components/preview_ai_test/exercise";
 import { useTestSession } from "@/store/TestSession/useTestSession";
-import { Problem } from "@/types/Test/test";
 import { useRouter } from 'next/navigation';
 import { useEffect } from "react";
 import axios from "axios";
-import { TestAI } from "@/types/Test/test";
 import { useQuery } from "@tanstack/react-query";
 
 

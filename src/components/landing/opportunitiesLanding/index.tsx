@@ -1,4 +1,3 @@
-import { OppButtons } from '../oppButton/index';
 import Image from 'next/image';
 
 export function OpportunitiesLanding() {

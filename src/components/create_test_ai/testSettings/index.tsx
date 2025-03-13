@@ -8,8 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { TestAI } from "@/types/Test/test";
-import { useQuery } from "@tanstack/react-query";
-import { useTestSession } from "@/store/TestSession/useTestSession";
+// import { useTestSession } from "@/store/TestSession/useTestSession";
 
 
 
@@ -64,8 +63,8 @@ export function TestSettings() {
 //    })
 
     // передаю данные в хранилище сессии, чтобы на след страинцы отображался тест 
-    const setProblems = useTestSession((state) => state.setProblems)
-    const setTestName = useTestSession((state) => state.setTestName)
+    // const setProblems = useTestSession((state) => state.setProblems)
+    // const setTestName = useTestSession((state) => state.setTestName)
 
     const handleSubmit = async () => {
         setIsClick(true)

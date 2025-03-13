@@ -4,7 +4,6 @@ import React, { useEffect, useState } from "react";
 import Dropdown from "@/components/create_test_ai/dropdown";
 import TextPrompt from "@/components/create_test_ai/textPrompt";
 import { useRouter } from 'next/navigation';
-import { Test } from "@/types/Test/test";
 
 import { useTestCreateAlone } from "@/store/create_test/CreateTestAlone";
 
@@ -25,8 +24,6 @@ export function TestSettingsAlone() {
 
     }, [setInfo, testName])
 
-
-    const [testId, setTestId] = useState("")
 
     // UI ONLY not FUNC
     const [time, setTime] = useState("");

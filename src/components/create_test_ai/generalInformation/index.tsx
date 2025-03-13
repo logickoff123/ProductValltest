@@ -1,10 +1,8 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import Dropdown from "../dropdown";
-import TextPrompt from "../textPrompt"; // Импортируем компонент textarea
-import { DropdownProvider } from "../dropdown/dropdownContext";
 import { useTestCreateAI } from "@/store/create_test/CreateTestAI";
 import { TestAI } from '@/types/Test/test';
 

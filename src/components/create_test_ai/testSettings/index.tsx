@@ -36,13 +36,13 @@ export function TestSettings() {
 
     // отправляю данные для нейронки
     const postTest = async (newTest: Partial<TestAI>) => {
-        const response = await axios.post('https://10111897.xyz/api/generate_question', newTest);
+        const response = await axios.post('https://10111897.xyz/api/generate_question/', newTest);
         return response.data; // ожидаю, что сервер вернёт { testId: "123" }
     };
 
     // получаю тест
     //const getTest = async (testId: string) => {
-        //const response = await axios.get(`https://10111897.xyz/get_test/${testId}`); // ${testId}
+        //const response = await axios.get(`https://10111897.xyz/api/get_test/${testId}/`); // ${testId}
         //return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
     //};
 

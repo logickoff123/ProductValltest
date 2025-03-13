@@ -38,7 +38,7 @@ export const CreateTestContainer: React.FC = () => {
 
   const { mutate, isPending } = useMutation({
     mutationFn: async () => {
-      const response = await axios.post("http://localhost:8000/create_test_manually", creationInfo);
+      const response = await axios.post("https://10111897.xyz/api/create_test_manually", creationInfo);
       return response.data; // ожидаю, что сервер вернет объект с id
 
       // // ✅ Эмулируем серверный ответ с задержкой 1 сек

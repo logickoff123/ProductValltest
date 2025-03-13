@@ -87,7 +87,7 @@ export function PreviewAIContainer({id:testId}:{id: number}) {
 
     // получаю тест
     const getTest = async (testId: number) => {
-        const response = await axios.get(`http://localhost:8000/get_test/${testId}`); // ${testId}
+        const response = await axios.get(`https://10111897.xyz/api/get_test/${testId}`); // ${testId}
         return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
     };
 

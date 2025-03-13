@@ -16,7 +16,7 @@ export function GenerateQuestionsButton() {
   const { mutate, isPending } = useMutation({
     mutationKey: ['postText'],
     mutationFn: async () => {
-      const response = await axios.post('http://localhost:8000/generate_question_from_text', { text }); // запрос на локал хост, передаю текст в json 
+      const response = await axios.post('https://10111897.xyz/api/generate_question_from_text', { text }); // запрос на локал хост, передаю текст в json 
       return response.data.questions;
     },
     onSuccess: (data) => {

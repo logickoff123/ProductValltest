@@ -2,7 +2,6 @@ import { WorkShopCategory } from "@/components/workShop/categoryButtons"
 import { CreateTestButton } from "@/components/workShop/createTestButton"
 import { SearchBarWorkShop } from "@/components/workShop/searchBar"
 import { FilterBar } from "@/components/workShop/filterBar"
-import { TestCard } from "@/components/catalog/testBlock/testCard"
 import { WideTestCard } from "@/components/workShop/wideTestCard"
 
 

@@ -1,6 +1,6 @@
 "use client";
 
-import React, { useEffect, useState } from "react";
+import React, { useEffect } from "react";
 import Link from "next/link";
 import { Test } from '@/types/Test/test';
 import Dropdown from "@/components/create_test_ai/dropdown";

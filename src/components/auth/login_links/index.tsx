@@ -2,8 +2,8 @@
 
 export default function AuthButtons() {
   const handleGoogleAuth = () => {
-    const clientId = 'ВАШ_CLIENT_ID';
-    const redirectUri = encodeURIComponent('http://localhost:3000/auth/google/callback');
+    const clientId = 'ВАШ_CLIENT_ID'; // ???????
+    const redirectUri = encodeURIComponent('http://localhost:3000/auth/google/callback'); // ??????? localhost ?????????
     const scope = encodeURIComponent('profile email');
     const responseType = 'code';
 
@@ -12,8 +12,8 @@ export default function AuthButtons() {
   };
 
   const handleVKAuth = () => {
-    const clientId = 'ВАШ_CLIENT_ID';
-    const redirectUri = encodeURIComponent('http://localhost:3000/auth/vk/callback');
+    const clientId = 'ВАШ_CLIENT_ID'; // ???????
+    const redirectUri = encodeURIComponent('http://localhost:3000/auth/vk/callback'); // ??????? localhost ?????????
     const scope = 'email';
     const responseType = 'code';
 
@@ -22,8 +22,8 @@ export default function AuthButtons() {
   };
 
   const handleYandexAuth = () => {
-    const clientId = 'ВАШ_CLIENT_ID';
-    const redirectUri = encodeURIComponent('http://localhost:3000/auth/yandex/callback');
+    const clientId = 'ВАШ_CLIENT_ID'; // ???????
+    const redirectUri = encodeURIComponent('http://localhost:3000/auth/yandex/callback'); // ??????? localhost ?????????
     const responseType = 'code';
 
     const authUrl = `https://oauth.yandex.ru/authorize?client_id=${clientId}&redirect_uri=${redirectUri}&response_type=${responseType}`;

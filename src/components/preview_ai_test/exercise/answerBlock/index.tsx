@@ -1,5 +1,4 @@
 import { useTestSession } from "@/store/TestSession/useTestSession";
-import { InlineMath, BlockMath } from 'react-katex';
 import Latex from  'react-latex';
 import 'katex/dist/katex.min.css';
 
@@ -32,8 +31,7 @@ export function TaskBlock({ answer, colour, exerciseIndex }: { answer: string; c
             ${selectedAnswer === answer ? 'border-[#C1EF00]' : 'border-mainBackground'}
             `}
         >
-             <Latex children={answer} /> 
+             <Latex>{answer}</Latex>
         </button>
     );
 }
-

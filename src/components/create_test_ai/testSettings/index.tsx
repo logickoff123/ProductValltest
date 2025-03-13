@@ -8,8 +8,7 @@ import { useRouter } from 'next/navigation';
 import { useMutation } from "@tanstack/react-query";
 import axios from "axios";
 import { TestAI } from "@/types/Test/test";
-import { useQuery } from "@tanstack/react-query";
-import { useTestSession } from "@/store/TestSession/useTestSession";
+// import { useTestSession } from "@/store/TestSession/useTestSession";
 
 
 
@@ -37,13 +36,13 @@ export function TestSettings() {
 
     // отправляю данные для нейронки
     const postTest = async (newTest: Partial<TestAI>) => {
-        const response = await axios.post('http://localhost:8000/api/generate_question', newTest);
+        const response = await axios.post('https://10111897.xyz/api/generate_question/', newTest);
         return response.data; // ожидаю, что сервер вернёт { testId: "123" }
     };
 
     // получаю тест
     //const getTest = async (testId: string) => {
-        //const response = await axios.get(`http://localhost:8000/get_test/${testId}`); // ${testId}
+        //const response = await axios.get(`https://10111897.xyz/api/get_test/${testId}/`); // ${testId}
         //return response.data; // ожидаю, что сервер вернёт { test: { ...данные теста... } }
     //};
 
@@ -64,8 +63,8 @@ export function TestSettings() {
 //    })
 
     // передаю данные в хранилище сессии, чтобы на след страинцы отображался тест 
-    const setProblems = useTestSession((state) => state.setProblems)
-    const setTestName = useTestSession((state) => state.setTestName)
+    // const setProblems = useTestSession((state) => state.setProblems)
+    // const setTestName = useTestSession((state) => state.setTestName)
 
     const handleSubmit = async () => {
         setIsClick(true)

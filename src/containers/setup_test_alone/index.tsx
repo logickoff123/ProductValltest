@@ -128,8 +128,6 @@ export const CreateTestContainer: React.FC = () => {
         </div>
       }
 
-
-
       <button
         disabled={isPending || !isTestProblemsValid}
         className={`mt-10 text-lg flex px-[12px] w-fit h-[42px] justify-center items-center rounded-[12px] ${isTestProblemsValid ? "bg-[rgba(193,239,0,1)] text-black" : "bg-gray-500 text-gray-300 cursor-not-allowed"}`}

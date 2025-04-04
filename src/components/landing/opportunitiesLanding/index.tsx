@@ -4,9 +4,9 @@ import Image from 'next/image';
 export function OpportunitiesLanding() {
 
     return (
-        <div className="flex h-full flex-col px-[80px] mb-[90px]">
-            <p id='opportunities' className='scroll-mt-[80px] font-inter font-semibold text-2xl leading-[24px] text-[rgba(193,239,0,1)] mb-[12px]'>ВОЗМОЖНОСТИ</p>
-            <p className='font-inter font-semibold text-5xl leading-[70px] text-white mb-[40px] flex items-center'>Сервис для прокачки знаний</p>
+        <div className="flex h-full flex-col mb-[90px]">
+            <p id='opportunities' className='scroll-mt-[80px] font-inter font-semibold text-xl leading-[24px] text-[rgba(193,239,0,1)] mb-[12px]'>ВОЗМОЖНОСТИ</p>
+            <p className='h-[44px] font-inter font-semibold text-4xl text-white mb-[40px] flex items-center'>Сервис для прокачки знаний</p>
             <div className="flex flex-row gap-[24px]">
                
                 <div className="group w-full h-[272px] rounded-[24px] bg-transparent border-[1px] border-[rgba(193,239,0,1)] 

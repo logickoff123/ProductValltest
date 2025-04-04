@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import SearchInput from '@/components/create_test_alone/search_input/search_input'; // Импортируем компонент поисковой строки
+import SearchInput from '@/components/create_test_alone/search_input/search_input'; 
 
 interface Option {
   value: string;

@@ -19,7 +19,7 @@ const Container = () => {
         />
         <LinkBox
           icon="/create_test/code-01.svg"
-          text="Создание текста ИИ"
+          text="Создание теста ИИ"
           link="catalog/create_test_ai/"
           description="Используйте возможности искусственного интеллекта для мгновенного создания тестов, экономя свое время и усилия"
         />

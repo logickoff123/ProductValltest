@@ -5,6 +5,9 @@ export interface TestCardInterface {
     totalQuestions?: number;
     totalComplited?: number;
     lvl?: "Легкий" | "Средний" | "Тяжелый";
-    score?: number | string
-    tags?: string[]
+    score?: number | string;
+    tags?: string[];
+
+    // new argument 
+    linkToTest: string;
 }

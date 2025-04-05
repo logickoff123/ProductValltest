@@ -3,13 +3,16 @@ import Image from "next/image";
 import { MainCardInfo, TakeTestButton, TestTag } from "@/components/catalog/testBlock/testCard/mainComponents";
 import { TestCardInterface } from "@/types/TestCardInterface";
 
-export function WideTestCard({ name = 'Python для самых маленьких',
+export function WideTestCard({
+    name = 'Python для самых маленьких',
     imgPath = "catalog/testCardImage.png",
     totalQuestions = 10,
     totalComplited = 151,
     lvl = "Средний",
     score = 4.9,
-    tags = ['ИИ', 'Математика'] }: TestCardInterface) {
+    tags = ['ИИ', 'Математика'],
+    linkToTest
+}: TestCardInterface) {
 
 
     return (
@@ -36,7 +39,7 @@ export function WideTestCard({ name = 'Python для самых маленьки
                     </div>
                 </div>
                 {/* Кнопка "Пройти тест" */}
-                <TakeTestButton score={score} />
+                <TakeTestButton score={score} link={linkToTest} />
             </div>
         </div>
     );

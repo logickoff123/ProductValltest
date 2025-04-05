@@ -1,3 +1,8 @@
+// сущность описывающая тест приходящий с бэка
+export type ImportTest = {
+    name: string;
+    link: string;
+}
 
 // стандартный Test, который используем повсеместно 
 export type Test = {

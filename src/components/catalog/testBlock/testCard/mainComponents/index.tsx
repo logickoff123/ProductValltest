@@ -4,7 +4,7 @@ import { DynamicSVG } from "../../testScore";
 
 
 // Кнопка Пройти тест 
-export const TakeTestButton = ({ score }: { score: string | number }) => {
+export const TakeTestButton = ({ score, link }: { score: string | number, link: string }) => {
     return (
         <div className=" w-full flex items-center justify-between" >
             <Link href="#" className="flex items-center gap-2  bg-white px-4  rounded-lg transition duration-300 hover:scale-105 hover:bg-[#C1EF00]">

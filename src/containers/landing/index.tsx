@@ -10,7 +10,7 @@ export function LandingContainers() {
 
 
     return (
-        <div className="w-full h-full flex flex-col">
+        <div className="w-full max-w-[1440px] h-full flex flex-col justify-center m-auto px-[80px]">
             <HeaderLanding />
             <StartLanding />
             <OpportunitiesLanding />

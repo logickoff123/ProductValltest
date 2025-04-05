@@ -1,18 +1,24 @@
+import Image from "next/image"
+
 export function AboutUsLanding() {
 
     return (
-        <div className="flex h-full flex-col px-[80px] mb-[457px] mt-[40px]">
-            <p id="aboutUs" className='scroll-mt-[80px] font-inter font-semibold text-2xl leading-[24px] text-[rgba(193,239,0,1)] mb-[12px]'>О НАС</p>
-            <p className='font-inter font-semibold text-5xl leading-[70px] text-white mb-[40px]'>Узнайте больше сейчас</p>
+        <div className="flex h-[1230px] flex-col mb-[80px] mt-[40px] w-auto max-w-[1440px] relative">
+            <p id="aboutUs" className='scroll-mt-[80px] font-inter font-semibold text-xl leading-[24px] text-[rgba(193,239,0,1)] mb-[14px]'>О НАС</p>
+            <p className='h-[44px] font-inter font-semibold text-4xl text-white mb-[40px]'>Узнайте больше сейчас</p>
+
+            <div className="w-[352px]">
+                <Image src="/landing/bigLogo.svg" width={352} height={87} alt="LogoValltest"/>
+            </div>
             
-            <div className='bg-white w-[522px] h-[522px] rounded-[100%] flex absolute right-0 mt-[220px] mr-[380px] font-inter font-semibold 
-            text-3xl leading-[180%] text-center items-center justify-center'>
+            <div className='bg-white size-[402px] rounded-[100%] flex absolute right-0 mt-[220px] mr-[191px] font-inter font-semibold 
+            text-2xl leading-[180%] text-center items-center justify-center'>
                 Создадим тесты и проверим <br />
                 их, сохранив ваше время и <br />
                 силы
             </div>
 
-            <div className='bg-[rgba(193,239,0,1)] w-[723px] h-[723px] rounded-[100%] ml-[3px] mt-[320px] font-inter font-semibold text-3xl 
+            <div className='bg-[rgba(193,239,0,1)] size-[556px] rounded-[100%] mt-[224px] font-inter font-semibold text-2xl 
             leading-[180%] tracking-[0px] text-center flex items-center justify-center flex-col'>
                 Мы хотим, чтобы наш продукт <br />
                 помогал обучающимся проще <br />
@@ -22,8 +28,8 @@ export function AboutUsLanding() {
                 <span className='font-extrabold'>Освобождаем вас от рутины, для <br />жизни</span> 
             </div>
 
-            <div className="bg-[rgba(193,239,0,1)] w-[564px] h-[564px] rounded-[100%] flex absolute right-0 mr-[100px] mt-[920px] font-inter 
-            font-semibold text-3xl leading-[180%] tracking-[0px] text-center justify-center items-center flex-col">
+            <div className="bg-[rgba(193,239,0,1)] size-[434px] rounded-[100%] flex absolute right-0 mr-[0px] mt-[796px] font-inter 
+            font-semibold text-[22px] leading-[180%] tracking-[0px] text-center justify-center items-center flex-col">
                 <span className="font-extrabold">Наша цель -</span> 
                 приносить в <br />
                 образовательный процесс<br />

@@ -1,7 +1,7 @@
 'use client';
 
 import React from 'react';
-import GeneralInfo from '@/components/create_test_alone/info_generation/info_generation'; // Импорт компонента GeneralInfo
+import GeneralInfo from '@/components/create_test_alone/info_generation/info_generation'; 
 import TestSettingsContainer from '@/components/create_test_alone/test_settings_container/test_settings_container'; // Импорт компонента TestSettings
 import Link from 'next/link';
 

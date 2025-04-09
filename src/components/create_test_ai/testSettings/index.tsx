@@ -17,6 +17,8 @@ export function TestSettings() {
 
     const { push } = useRouter()
 
+    const difficulty = useTestCreateAI((state) => state.creationInfoAI.difficulty);
+    const topic = useTestCreateAI((state) => state.creationInfoAI.topic);
     const creationInfoAI = useTestCreateAI((state) => state.creationInfoAI)
     const testName = useTestCreateAI((state) => state.creationInfoAI.name)
     const totalQuestions = useTestCreateAI((state) => state.creationInfoAI.totalQuestions)
@@ -90,16 +92,18 @@ export function TestSettings() {
     const times = ["Нет ограничений", "5 секунд", "10 секунд", "20 секунд", "30 секунд", "45 секунд", "1 минута", "1,5 минуты", "2 минуты", "3 минуты", "5 минут", "10  минут", "15  минут"];
     const numberOfPointss = ["1 балл", "2 балла", "3 балла", "4 балла", "5 баллов", "6 баллов", "7 баллов", "8 баллов", "9 баллов", "10 баллов", "Другое"];
     const statuss = ["Личный", "Публичный"];
+    const levels = ["Легкий", "Средний", "Сложный"];
+    const topics = ["Матрицы", "Интегралы", "Вектора", "Пределы"];
 
 
 
     return (
         <div className="flex flex-col gap-[24px]">
             <div className="bg-secondaryBackground rounded-[24px] px-[24px] pt-[24px] pb-[24px]">
-                <h1 className="text-white font-['Arial'] font-bold text-[32px] leading-[36.8px]">Настройки теста</h1>
+                <h1 className="text-white font-['Arial'] font-bold text-[32px] leading-[36.8px]">Настройки теста ИИ</h1>
 
                 <div className="mt-[15px] space-x-4 flex-row flex">
-                    <TextPrompt label="Название Теста" placeholder="Напишите название теста" value={testName} onChange={(e) => setInfo({ name: e.target.value })} /> {/* Подключаем textarea */}
+                     {/* Подключаем textarea */}
                     <TextPrompt
                         label="Количество вопросов"
                         placeholder="Напишите кол-во вопросов"
@@ -112,9 +116,10 @@ export function TestSettings() {
                 </div>
 
                 <div className="flex space-x-4 mt-[16px]">
-                    <Dropdown id="dropdown4" label="Время" placeholder="Время на одно задание" options={times} selected={time} onChange={setTime} />
+                    <Dropdown id="dropdown2" label="Уровень" placeholder="Выберите уровень ученика" options={levels} selected={difficulty} onChange={(value) => setInfo({ difficulty: value as TestAI["difficulty"] })} />
+                    <Dropdown id="dropdown3" label="Тема" placeholder="Выберите тему теста" options={topics} selected={topic} onChange={(value) => setInfo({ topic: value })} />
+                    <Dropdown id="dropdown4" label="Количество вопросов" placeholder="Напишите кол-во вопросов" options={times} selected={time} onChange={setTime} />
                     <Dropdown id="dropdown5" label="Количество баллов" placeholder="Кол-во баллов за 1 задание" options={numberOfPointss} selected={numberOfPoints} onChange={setNumberOfPoints} />
-                    <Dropdown id="dropdown6" label="Статус" placeholder="Выберите статус теста" options={statuss} selected={status} onChange={setStatus} />
                 </div>
             </div>
             <div>

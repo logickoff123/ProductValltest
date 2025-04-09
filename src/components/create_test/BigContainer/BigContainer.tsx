@@ -3,14 +3,14 @@ import LinkBox from '@/components/create_test/LinkBox/LinkBox';
 
 const Container = () => {
   return (
-    <div className="relative bg-[#141415] w-full max-w-[600px] h-auto sm:h-[520px] flex flex-col justify-between px-4 py-6 rounded-[24px] shadow-lg">
+    <div className="relative bg-[#141415] w-full max-w-[500px] h-auto flex flex-col justify-start p-6 rounded-[24px] shadow-lg">
       <div className="mb-4 flex justify-between items-center">
-        <h1 className="text-3xl sm:text-4xl font-bold text-white mb-2 font-arial">Метод создание теста</h1>
+        <h1 className="sm:text-4xl font-sans font-bold text-[32px] text-white mb-2">Метод создание теста</h1>
         <div className="cursor-pointer">
           <CrossButton />
         </div>
       </div>
-      <div className="flex flex-col space-y-4">
+      <div className="flex flex-col gap-4">
         <LinkBox
           icon="/create_test/tool-02.svg"
           text="Создание теста самостоятельно"
@@ -23,12 +23,12 @@ const Container = () => {
           link="catalog/create_test_ai/"
           description="Используйте возможности искусственного интеллекта для мгновенного создания тестов, экономя свое время и усилия"
         />
-        <LinkBox
+        {/* <LinkBox
           icon="/create_test/question.svg"
           text="Генерация вопросов по тексту"
           link="/text_to_generate/"
           description="Загрузите текст, и искусственный интеллект автоматически сформирует вопросы на его основе — быстро и без лишних действий"
-        />
+        /> */}
       </div>
     </div>
   );

@@ -19,7 +19,14 @@ export function GeneralInformation() {
     const setInfo = useTestCreateAI((state) => state.setInfo);
     const creationInfoAI = useTestCreateAI((state) => state.creationInfoAI);
     const isTestOptionsValid = useTestCreateAI((state) => state.isTestOptionsValid)
+    const testName = useTestCreateAI((state) => state.creationInfoAI.name)
+    const totalQuestions = useTestCreateAI((state) => state.creationInfoAI.totalQuestions)
+    
+    useEffect(() => {
+        setInfo({ name: testName, totalQuestions })
+        isTestOptionsValid()
 
+    }, [setInfo, testName, totalQuestions])
 
 
     useEffect(() => {
@@ -39,15 +46,13 @@ export function GeneralInformation() {
         <div className="bg-secondaryBackground rounded-[24px] px-[24px] pt-[24px] pb-[24px] mb-[24px]">
             <div className="flex justify-between">
                 <h1 className="text-white font-['Arial'] font-bold text-[32px] leading-[36.8px]">Общая информация</h1>
-                <Link onClick={() => console.log({ creationInfoAI: creationInfoAI, isTestOptionsValid: isTestOptionsValid() })} href="" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] w-[104px] h-[42px] justify-center items-center">
+                {/* <Link onClick={() => console.log({ creationInfoAI: creationInfoAI, isTestOptionsValid: isTestOptionsValid() })} href="" className="flex bg-[rgba(193,239,0,1)] text-black font-sans font-normal text-[16px] leading-[18.4px] rounded-[12px] w-[104px] h-[42px] justify-center items-center">
                     Сохранить
-                </Link>
+                </Link> */}
             </div>
 
             <div className="flex space-x-4 mt-[16px]">
-                <Dropdown id="dropdown1" label="Предмет" placeholder="Выберите категорию" options={subjects} selected={subject} onChange={(value) => setInfo({ subject: value })} />
-                <Dropdown id="dropdown2" label="Уровень" placeholder="Выберите уровень ученика" options={levels} selected={difficulty} onChange={(value) => setInfo({ difficulty: value as TestAI["difficulty"] })} />
-                <Dropdown id="dropdown3" label="Тема" placeholder="Выберите тему теста" options={topics} selected={topic} onChange={(value) => setInfo({ topic: value })} />
+                <TextPrompt label="Название теста" placeholder="Напишите название теста" value={testName} onChange={(e) => setInfo({ name: e.target.value })} />
             </div>
 
             {/* <div className="mt-[15px]">

@@ -20,39 +20,58 @@ export const TaskForm: React.FC<TaskFormProps> = ({
   onAnswersChange,
   onRemove,
 }) => {
+
+  const ANSWER_COLORS = [
+    'bg-[#0A589F]',
+    'bg-[#007C7F]',
+    'bg-[#E37009]',
+    'bg-[#E62E69]',
+    'bg-[#9A4292]',
+  ];
+
   const handleRemove = (event: React.MouseEvent<HTMLButtonElement>) => {
     onRemove(taskNumber);
   };
 
-  {/* Удаление ответа */ }
   const handleRemoveAnswer = (index: number) => {
     const newAnswers = answers.filter((_, i) => i !== index);
     onAnswersChange(newAnswers);
   };
 
-  {/* Добавление нового ответа */ }
   const handleAddAnswer = () => {
-    onAnswersChange([...answers, { value: '', is_correct: false }]);
+    if (answers.length < 6) {
+      onAnswersChange([...answers, { value: '', is_correct: false }]);
+    }
   };
 
-  {/* Изменение текста ответа */ }
   const handleAnswerChange = (index: number, value: string) => {
     const newAnswers = [...answers];
     newAnswers[index].value = value;
     onAnswersChange(newAnswers);
   };
-  {/* Выбор правильного ответа */ }
+
   const handleToggleCorrect = (index: number) => {
     const newAnswers = [...answers];
     newAnswers[index].is_correct = !newAnswers[index].is_correct;
     onAnswersChange(newAnswers);
   };
 
-  {/* Автоматическое изменение высоты textarea */ }
   const handleQuestionChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     onQuestionChange(e.target.value);
     e.target.style.height = 'auto';
     e.target.style.height = `${e.target.scrollHeight}px`;
+  };
+
+  const getAnswerGridClass = () => {
+    switch (answers.length) {
+      case 1: return 'grid-cols-1';
+      case 2: return 'grid-cols-2';
+      case 3: return 'grid-cols-3';
+      case 4: return 'grid-cols-2';
+      case 5: return 'grid-cols-3';
+      case 6: return 'grid-cols-3';
+      default: return 'grid-cols-1';
+    }
   };
 
   return (
@@ -65,17 +84,21 @@ export const TaskForm: React.FC<TaskFormProps> = ({
         placeholder="Введите вопрос"
         rows={1}
       />
-      {answers.map((answer, index) => (
-        <AnswerInput
-          key={index}
-          index={index}
-          value={answer.value}
-          onChange={handleAnswerChange}
-          onToggleCorrect={handleToggleCorrect}
-          isCorrect={answer.is_correct}
-          onRemove={handleRemoveAnswer}
-        />
-      ))}
+      
+      <div className={`grid ${getAnswerGridClass()} gap-4 w-full`}>
+        {answers.map((answer, index) => (
+          <AnswerInput
+            key={index}
+            index={index}
+            value={answer.value}
+            onChange={handleAnswerChange}
+            onToggleCorrect={handleToggleCorrect}
+            isCorrect={answer.is_correct}
+            onRemove={handleRemoveAnswer}
+            colorClass={ANSWER_COLORS[index % ANSWER_COLORS.length]}
+          />
+        ))}
+      </div>
 
       <button
         type="button"
@@ -86,13 +109,15 @@ export const TaskForm: React.FC<TaskFormProps> = ({
         <img src='./setup_test_alone/cross.svg' alt='Cross Icon' className='h-6 w-6 transition duration-200 group-hover:filter group-hover:invert' />
       </button>
 
-      <button
-        type="button"
-        onClick={handleAddAnswer}
-        className="bg-[#1C1C1D] rounded-[12px] hover:bg-[rgba(193,239,0,1)] transition duration-200 mt-5 flex items-center justify-center w-11 h-11 mx-auto group hover:scale-105 transform"
-      >
-        <img src="./setup_test_alone/plus.svg" alt="Plus Icon" className="h-4 w-4 transition duration-200 group-hover:filter group-hover:invert" />
-      </button>
+      {answers.length < 6 && (
+        <button
+          type="button"
+          onClick={handleAddAnswer}
+          className="bg-[#1C1C1D] rounded-[12px] hover:bg-[rgba(193,239,0,1)] transition duration-200 mt-5 flex items-center justify-center w-11 h-11 mx-auto group hover:scale-105 transform"
+        >
+          <img src="./setup_test_alone/plus.svg" alt="Plus Icon" className="h-4 w-4 transition duration-200 group-hover:filter group-hover:invert" />
+        </button>
+      )}
     </div>
   );
 };

@@ -7,6 +7,7 @@ export default {
     "./src/containers/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/actions/**/*.{js,ts,jsx,tsx,mdx}",
     "./src/app/**/*.{js,ts,jsx,tsx,mdx}",
+    "./src//**/*.{js,ts,jsx,tsx,mdx}",
   ],
 
   theme: {

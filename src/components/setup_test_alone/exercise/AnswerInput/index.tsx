@@ -9,6 +9,7 @@ interface AnswerInputProps {
   onToggleCorrect: (index: number) => void;
   isCorrect: boolean;
   onRemove: (index: number) => void;
+  colorClass: string;
 }
 
 export const AnswerInput: React.FC<AnswerInputProps> = ({
@@ -18,6 +19,7 @@ export const AnswerInput: React.FC<AnswerInputProps> = ({
   onToggleCorrect,
   isCorrect,
   onRemove,
+  colorClass,
 }) => {
   const textareaRef = useRef<HTMLTextAreaElement>(null);
 
@@ -29,7 +31,7 @@ export const AnswerInput: React.FC<AnswerInputProps> = ({
   }, [value]);
 
   return (
-    <div className="relative flex items-start mb-2">
+    <div className={`relative ${colorClass} rounded-[12px] p-4 min-h-[100px]`}>
       <button
         type="button"
         onClick={() => onRemove(index)}
@@ -41,20 +43,24 @@ export const AnswerInput: React.FC<AnswerInputProps> = ({
 
       <div
         onClick={() => onToggleCorrect(index)}
-        className={`absolute left-2 top-2 w-5 h-5 rounded-full border-2 cursor-pointer ${isCorrect ? 'border-black' : 'border-black'}`}
-      >
-        {isCorrect && (
-          <svg className="w-full h-full" viewBox="0 0 24 24">
-            <path fill="black" d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" />
-          </svg>
-        )}
+        className={`absolute left-2 top-2 w-8 h-8 rounded-[10px] cursor-pointer transition-colors flex items-center justify-center
+        ${isCorrect ? 'bg-[rgba(193,239,0,1)]' : 'bg-[#1c1c1db3]'}`}
+        >
+          <div className={`w-4 h-4 rounded-full transition-colors flex items-center justify-center
+            ${isCorrect ? 'bg-[rgba(193,239,0,1)] border-2 border-black' : 'bg-transparent border-2 border-white'}`}>
+            {isCorrect && (
+              <svg  className="w-3 h-3"  viewBox="0 0 24 24"  fill="none" stroke="black" strokeWidth="2">
+                <path d="M9 16.17L4.83 12l-1.42 1.41L9 19 21 7l-1.41-1.41z" fill="none" />
+              </svg>
+            )}
+          </div>
       </div>
 
       <textarea
         ref={textareaRef}
         value={value}
         onChange={(e) => onChange(index, e.target.value)}
-        className="bg-[#007C7F] p-9 rounded-[12px] w-full min-h-[100px] flex-grow text-white resize-none overflow-hidden text-center text-lg focus:outline-none focus:ring-2 focus:ring-[rgba(193,239,0,1)] focus:border-transparent"
+        className="p-4 rounded-[8px] w-full text-white resize-none overflow-hidden text-center text-lg focus:outline-none focus:ring-2 focus:ring-[rgba(193,239,0,1)] focus:border-transparent placeholder-white placeholder-opacity-70 bg-transparent"
         placeholder="Введите вариант ответа"
         rows={1}
       />

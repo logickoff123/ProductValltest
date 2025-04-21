@@ -4,7 +4,7 @@ import { useEffect, useState } from 'react';
 import { useRouter } from "next/navigation";
 import { TaskForm } from '@/components/setup_test_alone/exercise/TaskForm';
 import { AddTaskButton } from '@/components/setup_test_alone/AddTaskButton';
-//import { TestName } from '@/components/setup_test_alone/TestName';
+import { TestName } from '@/components/setup_test_alone/TestName';
 import { useTestCreateAlone } from '@/store/create_test/CreateTestAlone';
 import { useMutation } from '@tanstack/react-query';
 import axios from 'axios';
@@ -16,15 +16,6 @@ interface Task {
   question: string;
   answers: { value: string; is_correct: boolean }[];
 }
-
-//Название теста
-export const TestName = ({ name }: { name: string }) => {
-  return (
-    <div className="bg-[#141415] p-6 rounded-[24px] shadow-md mb-6 flex items-center">
-      <h1 className="text-3xl text-white font-bold">{name}</h1>
-    </div>
-  );
-};
 
 export const CreateTestContainer: React.FC = () => {
 
